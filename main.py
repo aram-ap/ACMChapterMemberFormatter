@@ -1,9 +1,6 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import csv
 
+# Function to get student information from user
 def get_student_info():
     students = []
     input_format = input("Are the names entered separately, combined, or combined with email? (separately/combined/combined_with_email): ").strip().lower()
@@ -41,6 +38,7 @@ def get_student_info():
 
     return students
 
+# Function to read existing student information from file
 def read_existing_students(filename='students.csv'):
     existing_students = {}
     try:
@@ -53,6 +51,7 @@ def read_existing_students(filename='students.csv'):
         pass
     return existing_students
 
+# Function to write student information to file
 def write_to_csv(students, filename='students.csv'):
     existing_students = read_existing_students(filename)
     with open(filename, mode='w', newline='') as file:
@@ -68,6 +67,7 @@ def write_to_csv(students, filename='students.csv'):
         for (lastname, firstname), email in existing_students.items():
             writer.writerow([lastname, firstname, email])
 
+# This program takes student information from the user and writes it to a file
 if __name__ == '__main__':
     students = get_student_info()
     write_to_csv(students)
